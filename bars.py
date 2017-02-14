@@ -2,7 +2,11 @@ import json
 
 
 def load_data(filepath):
-    pass
+    """ load json-data from file"""
+    if not os.path.exists(filepath):
+        return None
+    with open(filepath, 'r') as file_handler:
+        return json.load(file_handler)
 
 
 def get_biggest_bar(data):
