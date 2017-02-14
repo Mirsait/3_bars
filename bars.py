@@ -1,4 +1,5 @@
 import json
+import os
 
 
 def load_data(filepath):
@@ -10,11 +11,15 @@ def load_data(filepath):
 
 
 def get_biggest_bar(data):
-    pass
+    def b(x): return x['SeatsCount']
+    dist = sorted(data, key =b, reverse=True)
+    return dist[0]['Name']
 
 
 def get_smallest_bar(data):
-    pass
+    def b(x): return x['SeatsCount']
+    dist = sorted(data, key =b, reverse=False)
+    return dist[0]['Name']
 
 
 def get_closest_bar(data, longitude, latitude):
@@ -22,4 +27,6 @@ def get_closest_bar(data, longitude, latitude):
 
 
 if __name__ == '__main__':
-    pass
+    parse_str = load_data('bars.json')
+    print(get_biggest_bar(parse_str))
+    print(get_smallest_bar(parse_str))
